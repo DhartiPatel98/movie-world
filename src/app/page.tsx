@@ -21,14 +21,14 @@ export interface Movie {
 const Home: React.FC<IProps> = async ({ searchParams }) => {
   const res = await fetch(
     getTrendingOrTopRatedApiUrl(searchParams.genre === "fetchTopRated"),
-    { next: { revalidate: 10000 } }
+    { next: { revalidate: 5000 } }
   );
-
-  const data = await res.json();
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
+
+  const data = await res.json();
   const results: Array<Movie> = data.results;
 
   return <MovieList list={results} />;
