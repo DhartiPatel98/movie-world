@@ -28,7 +28,7 @@ const Card: React.FC<{ movie: Movie }> = (props) => {
           width={500}
           height={300}
           className="rounded-t-lg group-hover:opacity-75 transition-opacity duration-300"
-        ></Image>
+        />
         <div className="p-2">
           <p className="line-clamp-2 text-md">{overview}</p>
           <h2 className="text-lg font-bold truncate">

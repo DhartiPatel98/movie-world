@@ -11,3 +11,7 @@ export function getTrendingOrTopRatedApiUrl(isTopRated = false): string {
 
     return `${getBaseApiUrl()}/trending/all/week?api_key=${API_KEY}&language=en-US&page=1`;
 }
+
+export function getMovieDetailsURL(id: string): string {
+    return `${getBaseApiUrl()}/movie/${id}?api_key=${API_KEY}`
+}

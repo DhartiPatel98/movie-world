@@ -18,6 +18,12 @@ export interface Movie {
   first_air_date: string;
   title: string;
   vote_count: number;
+  genres: Array<{
+    name: string;
+  }>;
+  spoken_languages: Array<{
+    name: string;
+  }>;
 }
 
 const Home: React.FC<IProps> = async ({ searchParams }) => {
