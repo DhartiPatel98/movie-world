@@ -15,3 +15,7 @@ export function getTrendingOrTopRatedApiUrl(isTopRated = false): string {
 export function getMovieDetailsURL(id: string): string {
     return `${getBaseApiUrl()}/movie/${id}?api_key=${API_KEY}`
 }
+
+export function getSearchMovieApiUrl(search: string): string {
+    return `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=${API_KEY}&language=en-US&page=1`
+}

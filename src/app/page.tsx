@@ -37,7 +37,7 @@ const Home: React.FC<IProps> = async ({ searchParams }) => {
   }
 
   const data = await res.json();
-  const results: Array<Movie> = data.results;
+  const results: Array<Movie> = data.results || [];
 
   return <MovieList list={results} />;
 };

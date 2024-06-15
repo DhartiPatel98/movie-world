@@ -7,6 +7,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Providers from "./Providers";
 import Navbar from "@/components/navbar/Navbar";
+import SearchBox from "@/components/SearchBox";
 
 config.autoAddCss = false;
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <div className="px-6 lg:px-28">
             <Header />
             <Navbar />
+            <SearchBox />
             {children}
           </div>
         </Providers>

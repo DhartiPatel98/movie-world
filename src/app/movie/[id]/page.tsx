@@ -13,10 +13,15 @@ const MovieDetails: NextPage<IProps> = async ({ params }) => {
   const response = await fetch(getMovieDetailsURL(params?.id || ""), {
     next: { revalidate: 10000 },
   });
+
   const details: Movie | undefined = await response.json();
 
-  if (!details) {
-    return null;
+  if (!details || !details.id) {
+    return (
+      <h2 className="text-center mt-10">
+        Failed to fetch data or resource not found
+      </h2>
+    );
   }
 
   const {
@@ -27,9 +32,9 @@ const MovieDetails: NextPage<IProps> = async ({ params }) => {
     first_air_date,
     overview,
     release_date,
-    vote_count,
-    genres,
-    spoken_languages,
+    vote_count = 0,
+    genres = [],
+    spoken_languages = [],
   } = details;
 
   return (
