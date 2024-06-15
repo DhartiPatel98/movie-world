@@ -36,13 +36,13 @@ export default function SearchBox() {
 
   return (
     <form
-      className="flex justify-between px-5 max-w-6xl mx-auto"
+      className="flex justify-between relative mt-10"
       onSubmit={handleSubmit}
     >
       <input
         type="text"
         placeholder="Search keywords..."
-        className="w-full h-14 rounded-md placeholder-gray-500 outline-none bg-transparent flex-1"
+        className="w-full h-14 rounded-md placeholder-gray-500 bg-transparent flex-1 border border-gray-400 hover:border-gray-500 focus:border-gray-500 pl-4 pr-20"
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
@@ -53,21 +53,23 @@ export default function SearchBox() {
           }
         }}
       />
-      {search && (
+      <div className="absolute right-4 top-4">
+        {search && (
+          <button
+            className="text-amber-600 disabled:text-gray-400 mr-5"
+            type="button"
+            onClick={clearSearch}
+          >
+            <FontAwesomeIcon icon={faCircleXmark} />
+          </button>
+        )}
         <button
-          className="text-amber-600 disabled:text-gray-400 mr-3"
-          type="button"
-          onClick={clearSearch}
+          className="text-amber-600 disabled:text-gray-400"
+          disabled={!enabled}
         >
-          <FontAwesomeIcon icon={faCircleXmark} />
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button>
-      )}
-      <button
-        className="text-amber-600 disabled:text-gray-400"
-        disabled={!enabled}
-      >
-        <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </button>
+      </div>
     </form>
   );
 }
