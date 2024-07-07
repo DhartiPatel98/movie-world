@@ -9,6 +9,18 @@ interface IProps {
   };
 }
 
+export const generateMetadata = async ({ params }: IProps) => {
+  const response = await fetch(getMovieDetailsURL(params?.id || ""), {
+    next: { revalidate: 10000 },
+  });
+  const details: Movie | undefined = await response.json();
+
+  return {
+    title: details?.title || details?.original_name || "",
+    description: details?.overview,
+  };
+};
+
 const MovieDetails: NextPage<IProps> = async ({ params }) => {
   const response = await fetch(getMovieDetailsURL(params?.id || ""), {
     next: { revalidate: 10000 },

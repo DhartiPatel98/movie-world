@@ -1,7 +1,13 @@
 import { AuthButton } from "@/components/AuthButton";
 import Avatar from "@/components/Avatar";
 import { getSessionData } from "@/utils/helperMethods";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  title: "Profile",
+  description: "Website to search for any movies",
+};
 
 const Profile = async () => {
   const session = await getSessionData();
@@ -16,7 +22,7 @@ const Profile = async () => {
   return (
     <div className="w-full mt-6">
       <h1 className="text-lg lg:text-3xl font-extrabold mb-3">Profile</h1>
-      <div className="border border-solid p-3 lg:p-6 w-full">
+      <div className="border border-solid p-5 lg:p-6 w-full">
         <div className="flex items-center justify-center">
           <Avatar height={80} width={80} />
         </div>

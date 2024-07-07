@@ -14,7 +14,10 @@ config.autoAddCss = false;
 const salsa = Salsa({ subsets: ["latin"], weight: "400", preload: true });
 
 export const metadata: Metadata = {
-  title: "Movie World",
+  title: {
+    default: "Home | Movie World",
+    template: "%s | Movie World",
+  },
   description: "Website to search for any movies",
 };
 

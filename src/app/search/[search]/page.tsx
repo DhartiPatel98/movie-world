@@ -1,6 +1,7 @@
 import { Movie } from "@/app/page";
 import MovieList from "@/components/MovieList";
 import { getSearchMovieApiUrl } from "@/utils/helperMethods";
+import { Metadata } from "next";
 
 interface SearchResults {
   results: Array<Movie>;
@@ -11,6 +12,10 @@ interface IProps {
     search: string;
   };
 }
+
+export const metadata: Metadata = {
+  title: "Search Movies",
+};
 
 const SearchedMovieList: React.FC<IProps> = async ({ params }) => {
   const res = await fetch(getSearchMovieApiUrl(params?.search || ""), {

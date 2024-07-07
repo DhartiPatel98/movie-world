@@ -1,6 +1,13 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Website to search for any movies",
+};
+
 const About = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 mt-4">
       <h1 className="text-2xl text-amber-600 font-bold">About</h1>
       <p>Welcome to our movie universe!</p>
       <p>
