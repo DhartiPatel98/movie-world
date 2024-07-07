@@ -1,3 +1,6 @@
+import { Session, User } from "next-auth";
+import { auth } from "../../auth";
+
 const API_KEY = process.env.API_KEY;
 
 export function getBaseApiUrl(): string {
@@ -18,4 +21,9 @@ export function getMovieDetailsURL(id: string): string {
 
 export function getSearchMovieApiUrl(search: string): string {
     return `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=${API_KEY}&language=en-US&page=1`
+}
+
+export async function getSessionData(): Promise<User | null> {
+    const session = await auth();
+    return session?.user || null;
 }

@@ -5,6 +5,7 @@ import DarkModeSwitch from "./DarkModeSwitch";
 import { AuthButton } from "./AuthButton";
 import { auth } from "../../auth";
 import Image from "next/image";
+import Avatar from "./Avatar";
 
 const Header = async () => {
   const session = await auth();
@@ -19,19 +20,7 @@ const Header = async () => {
         <DarkModeSwitch />
         {session && (
           <Link href={`/profile`}>
-            {session?.user?.image ? (
-              <Image
-                alt={session?.user?.name || "Profile"}
-                src={session?.user?.image || ""}
-                width={40}
-                height={40}
-                className="rounded-3xl"
-              />
-            ) : (
-              <div className="rounded-3xl w-10 h-10 border border-solid flex justify-center items-center font-extrabold">
-                D
-              </div>
-            )}
+            <Avatar />
           </Link>
         )}
         {!session && <AuthButton />}
