@@ -4,7 +4,6 @@ import Link from "next/link";
 import DarkModeSwitch from "./DarkModeSwitch";
 import { AuthButton } from "./AuthButton";
 import { auth } from "../../auth";
-import Image from "next/image";
 import Avatar from "./Avatar";
 
 const Header = async () => {

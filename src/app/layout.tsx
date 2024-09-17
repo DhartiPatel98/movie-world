@@ -8,7 +8,14 @@ import Header from "@/components/Header";
 import Providers from "./Providers";
 import Navbar from "@/components/navbar/Navbar";
 import SearchBox from "@/components/SearchBox";
+import { Suspense } from "react";
+import Loading from "./loading";
 
+/* 
+  Font Awesome requires some base CSS styles to display icons at the correct color and size and to 
+  enable the other styling options. When this option is true (default) these styles are automatically 
+  inserted into the <head> of the DOM.
+*/
 config.autoAddCss = false;
 
 const salsa = Salsa({ subsets: ["latin"], weight: "400", preload: true });
@@ -34,7 +41,7 @@ export default function RootLayout({
             <Header />
             <Navbar />
             <SearchBox />
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
           </div>
         </Providers>
       </body>
