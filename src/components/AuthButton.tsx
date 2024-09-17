@@ -1,4 +1,5 @@
-import { signIn, auth, signOut } from "../../auth";
+import { redirect } from "next/navigation";
+import { auth, signOut } from "../../auth";
 
 export async function AuthButton() {
   const session = await auth();
@@ -10,7 +11,7 @@ export async function AuthButton() {
       return;
     }
 
-    await signIn("google");
+    redirect("/login");
   };
 
   return (
