@@ -2,7 +2,11 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { signIn } from "next-auth/react";
-import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGoogle,
+  faGithub,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 
 const LoginForm = () => {
@@ -35,6 +39,19 @@ const LoginForm = () => {
           <>
             <FontAwesomeIcon icon={faGithub} />
             <span className="ml-3">Login with Github</span>
+          </>
+        </button>
+        <button
+          className="text-lg font-bold bg-white py-2 px-3 rounded-lg"
+          disabled={loading}
+          onClick={() => {
+            setLoading(true);
+            signIn("twitter");
+          }}
+        >
+          <>
+            <FontAwesomeIcon icon={faTwitter} />
+            <span className="ml-3">Login with Twitter</span>
           </>
         </button>
       </div>
